@@ -1,0 +1,5 @@
+// docker image bauen
+docker build -t user-api .
+
+// docker container starten
+docker run -d -p 8000:8000 --network my_network --name user-api user-api

@@ -1,0 +1,8 @@
+// Stubs für gRPC erzeugen
+python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. example.proto
+
+// Server starten
+python server.py
+
+// Client starten
+python client.py

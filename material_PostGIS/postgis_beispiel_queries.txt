@@ -1,0 +1,25 @@
+--
+SELECT name, ST_Centroid(geom) AS center
+FROM countries;
+--
+
+--
+SELECT name, ST_Area(geom::geography) AS area
+FROM countries
+ORDER BY area DESC
+LIMIT 10;
+--
+
+--
+SELECT c2.name
+FROM countries c1, countries c2
+WHERE c1.name = 'Germany'
+  AND ST_DWithin(c1.geom::geography, c2.geom::geography, 1000000) -- 1.000 km
+  AND c1.name <> c2.name;
+--
+
+--
+SELECT ST_Distance(a.geom::geography, b.geom::geography) AS distance_m
+FROM countries a, countries b
+WHERE a.name = 'Spain' AND b.name = 'Morocco';
+--

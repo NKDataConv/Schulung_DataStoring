@@ -1,0 +1,8 @@
+// Docker Image erstellen
+docker build -t mongo-imdb .
+
+// docker container starten
+docker run -d -p 27017:27017 --name mongo-imdb mongo-imdb
+
+// mongo express, login über user: admin und passwort: pass
+docker run -d -p 8081:8081 --name mongo-express --link mongo-imdb:mongo mongo-express

@@ -1,0 +1,39 @@
+# Übungen: Was machen die folgenden Abfragen?
+--
+SELECT a.name AS country1, b.name AS country2, ST_Length(ST_Intersection(a.geom, b.geom)::geography) AS border_length
+FROM countries a, countries b
+WHERE a.name <> b.name
+  AND ST_Intersects(a.geom, b.geom)
+ORDER BY border_length DESC
+LIMIT 10;
+--
+
+--
+SELECT name
+FROM countries
+WHERE ST_DWithin(
+    geom::geography,
+    ST_SetSRID(ST_MakePoint(12.4924, 41.8902), 4326)::geography,
+    500000
+);
+--
+
+--
+SELECT continent, COUNT(*) AS country_count, SUM(ST_Area(geom::geography)) AS total_area
+FROM countries
+GROUP BY continent
+ORDER BY total_area DESC;
+--
+
+--
+SELECT name, ST_Perimeter(geom) AS perimeter
+FROM countries
+ORDER BY perimeter DESC
+LIMIT 10;
+--
+
+--
+SELECT a.name AS country1, b.name AS country2
+FROM countries a, countries b
+WHERE ST_Touches(a.geom, b.geom) AND a.name = 'Germany';
+--

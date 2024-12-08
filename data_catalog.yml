@@ -1,0 +1,6 @@
+sources:
+  csv_example_data:
+    description: "Test Daten aus einer CSV-Datei"
+    driver: csv
+    args:
+      urlpath: "daten/example_data.csv"

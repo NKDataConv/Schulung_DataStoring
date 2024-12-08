@@ -1,0 +1,17 @@
+// docker container starten
+docker run --name postgres-test \
+    -e POSTGRES_USER=myuser \
+    -e POSTGRES_PASSWORD=mypassword \
+    -e POSTGRES_DB=mydatabase \
+    -p 5432:5432 \
+    --network my_network \
+    -d postgres
+
+ // in docker container einloggen
+ docker exec -it postgres-test bash
+
+ // in docker container psql starten
+ psql -U myuser -d mydatabase
+
+ // verfügbare Tabellen anzeigen
+ SELECT * FROM pg_catalog.pg_tables;

@@ -1,0 +1,30 @@
+// Tabelle erstellen: warehouse_products
+CREATE TABLE warehouse_products (
+    product_id SERIAL PRIMARY KEY,         -- Automatische ID (Ganzzahl, auto-increment)
+    product_name VARCHAR(150) NOT NULL,    -- Name des Produkts (Zeichenkette)
+    quantity INT NOT NULL,                 -- Verfügbare Menge (Ganzzahl)
+    price_per_unit NUMERIC(10, 2),         -- Preis pro Einheit (Dezimalwert mit zwei Nachkommastellen)
+    added_on DATE DEFAULT CURRENT_DATE     -- Datum, an dem das Produkt hinzugefügt wurde
+);
+
+// Daten einfügen:
+INSERT INTO warehouse_products (product_name, quantity, price_per_unit) VALUES ('Laptop', 10, 899.99);
+INSERT INTO warehouse_products (product_name, quantity, price_per_unit) VALUES ('Smartphone', 20, 499.99);
+INSERT INTO warehouse_products (product_name, quantity, price_per_unit) VALUES ('Tablet', 15, 299.99);
+
+INSERT INTO warehouse_products (product_name, quantity, price_per_unit) VALUES
+('Widget A', 100, 5.99),
+('Gadget B', 50, 15.49),
+('Tool C', 200, 2.49);
+
+// SELECT:
+SELECT * FROM warehouse_products;
+
+// SELECT mit Bedingung:
+SELECT * FROM warehouse_products WHERE quantity > 50;
+
+// UPDATE:
+UPDATE warehouse_products SET price_per_unit = 4.99 WHERE product_name = 'Widget A';
+
+// DELETE:
+DELETE FROM warehouse_products WHERE product_name = 'Gadget B';
