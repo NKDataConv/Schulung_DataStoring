@@ -1,5 +1,5 @@
 # automatische Code Generierung mit protoc
-# protoc --python_out=. person.proto
+# ../protoc/bin/protoc.exe --python_out=. person.proto
 
 from material_serialisierung.person_pb2 import Person
 
@@ -11,7 +11,7 @@ with open("material_serialisierung/person.bin", "wb") as file:
 
 
 # Aus der Datei lesen und deserialisieren
-with open("person.bin", "rb") as file:
+with open("material_serialisierung/person.bin", "rb") as file:
     person_data = file.read()
 
 # Erstellen einer neuen Person-Nachricht und Daten deserialisieren

@@ -15,5 +15,6 @@ RUN apt-get update && apt-get install -y postgis postgresql-client wget unzip \
 # Kopiere ein Startskript ins Image
 COPY import.sh /docker-entrypoint-initdb.d/import.sh
 COPY 50m_cultural/ /data/
+RUN sed -i -e 's/\r$//' /docker-entrypoint-initdb.d/import.sh
 RUN chmod 777 /docker-entrypoint-initdb.d/import.sh
 RUN chmod 777 /data/*
