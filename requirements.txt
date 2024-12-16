@@ -1,4 +1,4 @@
-psycopg2-binary
+pg8000
 sqlalchemy
 geopandas
 pymongo==4.10.1
