@@ -4,3 +4,14 @@ sources:
     driver: csv
     args:
       urlpath: "daten/example_data.csv"
+  cars_csv:
+    description: "Auto Daten"
+    driver: csv
+    args:
+      urlpath: "daten/cars.csv"
+  postgres_data_cars:
+    description: "Auto Daten"
+    driver: intake_sql.SQLSource
+    args:
+      uri: "postgresql+pg8000://myuser:mypassword@localhost:5432/mydatabase"
+      sql_expr: "SELECT * FROM warehouse_products"
